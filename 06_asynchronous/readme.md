@@ -144,3 +144,47 @@ const intervalId = setInterval(() => {
     if (count === 5) clearInterval(intervalId); // 5회 실행 후 종료
 }, 1000);
 ```
+
+----
+
+
+## Promise
+Promise는 비동기 작업의 성공과 실패를 관리하는 객체이다. 
+- 상태:
+  1. **Pending**: 대기 중
+  2. **Fulfilled**: 작업 성공
+  3. **Rejected**: 작업 실패
+- `then`으로 작업 성공 시 실행할 콜백을 등록하고, `catch`로 에러를 처리한다.
+
+### 표현식
+```js
+const promise = new Promise((resolve, reject) => {
+    // 비동기 작업
+    if (/* 성공 조건 */) {
+        resolve("작업 성공");
+    } else {
+        reject("작업 실패");
+    }
+});
+
+promise
+    .then((result) => console.log(result)) // 성공 시 실행
+    .catch((error) => console.error(error)); // 실패 시 실행
+```
+
+
+----
+
+## async/await
+- `async`와 `await`는 비동기 작업을 처리하기 위해 Promise를 더 간결하게 사용할 수 있게 한다.
+- **`async` 함수**는 항상 Promise를 반환하며, 내부에서 `await`을 사용해 비동기 작업의 완료를 기다릴 수 있다.
+- **`await`**은 Promise가 해결될 때까지 함수 실행을 일시 정지하며, 결과를 반환받는다.
+
+## 표현식
+```js
+async function asyncFunction() {
+    const result = await someAsyncTask();
+    console.log(result);
+}
+```
+
